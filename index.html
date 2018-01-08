@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Schedule App</title>
+
+    <!-- link to Bootstrap --> 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--link to custom CSS -->
+    <script src ="assets/css/style.css"></script>
+    <!--Link to Jquery --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- firebase javascript link --> 
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    
+
+</head>
+<body>
+
+
+    <!-- jumbotron for page heading --> 
+    <div class="jumbotron">
+            <div class="container">
+                <p class="text-center">Trip Planner </p>
+              
+            </div>
+          </div>
+
+
+    <!-- this is the table showing all the train data --> 
+    <div class="panel panel default">
+        <div class="panel-body">
+    </div>
+        <table class="table table-bordered">
+                <th>Train Name</th>
+                <th> Destination</th>
+                <th>Frequency</th>
+                <th>Next Arrival</th>
+                <th>Minutes Away </th>
+        </table>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+    <h3 class="panel-title">Add Train</h3>
+    </div>
+    <div class="panel-body">
+            <form>
+                    <div class="form-group">
+                      <label for="trainName">Train Name:</label>
+                      <input type="train-name" class="form-control" id="train-name-input" placeholder="Name of train ">
+                    </div>
+                    <div class="form-group">
+                      <label for="destination">Destination:</label>
+                      <input type="destination-name" class="form-control" id="destination-input" placeholder="Destination">
+                    </div>
+                    <div class="form-group">
+                            <label for="first-train-time">First Train Time:</label>
+                            <input type="first-train" class="form-control" id="first-train-time-input" placeholder="First Departing time ">
+                          </div>
+                          <div class="form-group">
+                                <label for="frequency">Frequency:</label>
+                                <input type="frequency" class="form-control" id="frequency-input" placeholder="Frequency">
+                              </div>
+                    
+                    
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+
+
+  
+    </div>
+</div>
+
+
+
+
+
+
+
+    <!--this is the form that takes user input and has a submit button --> 
+   
+
+          
+
+    <!-- nice to have - making it mobile responsive so that it can be viewed on a mobile device -->
+
+
+<!-- link to JS file -->
+
+<script src ="assets/moment.js"></script>
+</body>
+</html>
