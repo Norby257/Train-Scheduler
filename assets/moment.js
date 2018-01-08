@@ -42,6 +42,13 @@ console.log("we are linked");
       firstTrainTime = $("#first-train-input").val().trim();
       frequency = $("#frequency-input").val().trim();
 
+      //console logging to test this 
+
+      console.log(trainName);
+      console.log(destination);
+      console.log(firstTrainTime);
+      console.log(frequency);
+
 
       database.ref().set({
         "trainName" : trainName,
