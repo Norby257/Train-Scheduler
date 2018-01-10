@@ -1,3 +1,30 @@
+//pseudo - code 
+/* style this similar to cta app or google some transit apps 
+users who are admin(hint hint authenticated) can fill out the form with the train data
+this data goes to firebase - (woo I have that set up below)
+this data goes into the HTML table --googel tr and td 
+and then it updates it real time:
+a) current time - frequency = time of next arrival in HH:MM:SS format 
+google JS + Jquery time functions // date time functions 
+ a.1 be sure to append AM or PM - use a conditional statement to see this 
+ /am or pm but I thought it was military time?
+b)
+
+
+//the bonus challenges 
+
+//adding mins to arrival+  next train time each minnute //very difficult -save this for last
+
+
+//update and remove buttons for each train - function + for loop 
+
+//firebase authentications so only ppl who log into their google and github accounts can log in
+
+
+
+
+
+*/ 
 console.log("we are linked");
 
 //connect to firebase 
@@ -20,23 +47,22 @@ console.log("we are linked");
 
   var trainName ="";
   var destination = "";
-  var firstTrainTime= "";
-  var frequency = "";
+  var firstTrainTime= ""; //would this be int
+  var frequency = ""; //this would be number 
 
   //functions and events 
 
   //when submit button is clicked
   // step 1: get user input from form fields
-  //step 2: send to database
+  //step 2: send to database/write data to data base 
   //step 3: set up db so will print changes when they occur
-  //step 4: update the HTML / DOM accordingly  --will have to create TR and then be smart about selecting which rows to update 
 
   $("#submit-button").on("click", function() {
       console.log("I've been clicked");
       event.preventDefault();
       
 
-      //get the user input 
+      //get the user input from form fields 
       trainName = $("#name-input").val().trim();
       destination = $("#destination-input").val().trim();
       firstTrainTime = $("#first-train-input").val().trim();
@@ -49,7 +75,7 @@ console.log("we are linked");
       console.log(firstTrainTime);
       console.log(frequency);
 
-
+//database to save these values 
       database.ref().set({
         "trainName" : trainName,
         "destination": destination,
@@ -70,6 +96,16 @@ database.ref().on("value", function(snapshot) {
     console.log(snapshot.val().phone);
 })
 
-        //when i try to do that, permission denied - need to fix rules in firebase to test what's going on 
+//fixed rules 
+   //step 4: update the HTML / DOM accordingly  --will have to create TR and then be smart about selecting which rows to update --I think there was a past Jquery activity on this 
+//when user clicks submit button 
+function submitTrain() {
+  $("#submit-button").on("click", function(){
+    //make a TR in each column and put data there 
+    $("<tr>")
+    //then the table data goes inside the table row -- let's google this 
 
- 
+
+  })
+
+}
