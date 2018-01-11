@@ -44,13 +44,10 @@ console.log("we are linked");
   //variables 
 
   var database = firebase.database(); 
-
-  var trainName ="";
-  var destination = "";
-  var firstTrainTime= ""; //would this be int
-  var frequency = ""; //this would be number 
+//refactored this into obkect 
 
   //functions and events 
+  console.log
 
   //when submit button is clicked
   // step 1: get user input from form fields
@@ -68,12 +65,18 @@ console.log("we are linked");
       firstTrainTime = $("#first-train-input").val().trim();
       frequency = $("#frequency-input").val().trim();
 
+      var train = {
+        name: trainName,
+        destination: destination,
+        start: firstTrainTime, //would this be int
+        frequency: frequency //this would be number 
+      };
+
       //console logging to test this 
 
-      console.log(trainName);
-      console.log(destination);
-      console.log(firstTrainTime);
-      console.log(frequency);
+      console.log(train);
+
+   
 
 //database to save these values 
       database.ref().set({
@@ -102,7 +105,8 @@ database.ref().on("value", function(snapshot) {
 function submitTrain() {
   $("#submit-button").on("click", function(){
     //make a TR in each column and put data there 
-    $("<tr>")
+    $("<tr>");
+    $("<td>")
     //then the table data goes inside the table row -- let's google this 
 
 
