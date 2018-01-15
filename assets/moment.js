@@ -20,10 +20,6 @@ b)
 
 //firebase authentications so only ppl who log into their google and github accounts can log in
 
-
-
-
-
 */ 
 console.log("we are linked");
 
@@ -44,10 +40,14 @@ console.log("we are linked");
   //variables 
 
   var database = firebase.database(); 
-//refactored this into obkect 
+
+  //global date vars that will be used later 
+  var nextArrival;
+  var minutesAway;
+
+
 
   //functions and events 
-  console.log
 
   //when submit button is clicked
 
@@ -62,11 +62,16 @@ console.log("we are linked");
       firstTrainTime = $("#first-train-input").val().trim();
       frequency = $("#frequency-input").val().trim();
 
+      
+
       var newTrain = {
         name: trainName,
         destination: destination,
         start: firstTrainTime, //would this be int
-        frequency: frequency //this would be number 
+        frequency: frequency, //this would be int
+        nextArrival: nextArrival,
+        minutesAway: minutesAway
+       
       };
     
       //console logging to test this 
@@ -83,6 +88,8 @@ console.log("we are linked");
       console.log(newTrain.destination);
       console.log(newTrain.start);
       console.log(newTrain.frequency);
+      console.log(newTrain.nextArrival);
+      console.log(newTrain.minutesAway);
 
    
 
@@ -104,9 +111,15 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 // 3. add train data to the table 
 $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td></tr>");
-  })
 
   // 4.now do this with moment.js to calculate the next arrival 
-  //also format the date time correctly
+  //5. display that on screen 
+
+  
+
+
+  })
+
+  
 
 
