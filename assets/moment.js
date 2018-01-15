@@ -65,51 +65,58 @@ console.log("we are linked");
       firstTrainTime = $("#first-train-input").val().trim();
       frequency = $("#frequency-input").val().trim();
 
-      var train = {
+      var newTrain = {
         name: trainName,
         destination: destination,
         start: firstTrainTime, //would this be int
         frequency: frequency //this would be number 
       };
-
+    
       //console logging to test this 
 
-      console.log(train);
+      console.log(newTrain);
 
-   
+//database to save these values -use push 
+      database.ref().push(newTrain);
 
-//database to save these values 
-      database.ref().set({
-        "trainName" : trainName,
-        "destination": destination,
-        "firstTrainTime": firstTrainTime,
-        "frequency" : frequency
-      });
-  });
+      //log to console to test 
+
+      console.log(newTrain.trainName);
+      console.log(newTrain.destination);
+      console.log(newTrain.start);
+      console.log(newTrain.frequency);
 
     //step 3: set up db so will print changes when they occur
+    //changing this to child added 
 
-database.ref().on("value", function(snapshot) {
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     //as a test, console log initial data
-    console.log(snapshot.val());
+
+    //store new added data in vars 
+    var trainName = childSnapshot.val().trainName;
+    var destination = childSnapshot.val().destination;
+    var firstTrainTime = childSnapshot.val().start;
+    var frequency = childSnapshot.val().frequency;
 
     // as a test, log data of all properies 
-    console.log(snapshot.val().trainName);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().phone);
+  console.log(trainName);
+  console.log(destination);
+  console.log(firstTrainTime);
+  console.log(frequency);
 })
+  })
 
 //fixed rules 
    //step 4: update the HTML / DOM accordingly  --will have to create TR and then be smart about selecting which rows to update --I think there was a past Jquery activity on this 
 //when user clicks submit button 
-function submitTrain() {
-  $("#submit-button").on("click", function(){
-    //make a TR in each column and put data there 
-    $("<tr>");
-    $("<td>")
-    //then the table data goes inside the table row -- let's google this 
+// function submitTrain() {
+//   $("#submit-button").on("click", function(){
+//     //make a TR in each column and put data there 
+//     $("<tr>");
+//     $("<td>")
+//     //then the table data goes inside the table row -- let's google this 
 
 
-  })
+//   })
 
-}
+// }
