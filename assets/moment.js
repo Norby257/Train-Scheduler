@@ -50,16 +50,13 @@ console.log("we are linked");
   console.log
 
   //when submit button is clicked
-  // step 1: get user input from form fields
-  //step 2: send to database/write data to data base 
-  //step 3: set up db so will print changes when they occur
 
   $("#submit-button").on("click", function() {
       console.log("I've been clicked");
       event.preventDefault();
       
 
-      //get the user input from form fields 
+      // 1. get the user input from form fields 
       trainName = $("#name-input").val().trim();
       destination = $("#destination-input").val().trim();
       firstTrainTime = $("#first-train-input").val().trim();
@@ -76,7 +73,8 @@ console.log("we are linked");
 
       console.log(newTrain);
 
-//database to save these values -use push 
+  //step 2: send to database/write data to data base 
+
       database.ref().push(newTrain);
 
       //log to console to test 
@@ -86,8 +84,7 @@ console.log("we are linked");
       console.log(newTrain.start);
       console.log(newTrain.frequency);
 
-    //step 3: set up db so will print changes when they occur
-    //changing this to child added 
+   
 
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     //as a test, console log initial data
@@ -104,19 +101,12 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(firstTrainTime);
   console.log(frequency);
 })
+
+// 3. add train data to the table 
+$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td></tr>");
   })
 
-//fixed rules 
-   //step 4: update the HTML / DOM accordingly  --will have to create TR and then be smart about selecting which rows to update --I think there was a past Jquery activity on this 
-//when user clicks submit button 
-// function submitTrain() {
-//   $("#submit-button").on("click", function(){
-//     //make a TR in each column and put data there 
-//     $("<tr>");
-//     $("<td>")
-//     //then the table data goes inside the table row -- let's google this 
+  // 4.now do this with moment.js to calculate the next arrival 
+  //also format the date time correctly
 
 
-//   })
-
-// }
