@@ -1,19 +1,15 @@
 //pseudo - code 
 /* style this similar to cta app or google some transit apps 
 users who are admin(hint hint authenticated) can fill out the form with the train data
-this data goes to firebase - (woo I have that set up below)
-this data goes into the HTML table --googel tr and td 
 and then it updates it real time:
 a) current time - frequency = time of next arrival in HH:MM:SS format 
-google JS + Jquery time functions // date time functions 
- a.1 be sure to append AM or PM - use a conditional statement to see this 
+
  /am or pm but I thought it was military time?
 b)
 
 
 //the bonus challenges 
 
-//adding mins to arrival+  next train time each minnute //very difficult -save this for last
 
 
 //update and remove buttons for each train - function + for loop 
@@ -40,12 +36,8 @@ console.log("we are linked");
   //variables 
 
   var database = firebase.database(); 
-
-  //global date vars that will be used later 
   var nextArrival;
   var minutesAway;
-
-
 
   //functions and events 
 
@@ -69,14 +61,28 @@ console.log("we are linked");
         destination: destination,
         start: firstTrainTime, //would this be int
         frequency: frequency, //this would be int
-        nextArrival: nextArrival,
-        minutesAway: minutesAway
+        // nextArrival: nextArrival,
+        // minutesAway: minutesAway
        
       };
     
+
       //console logging to test this 
 
       console.log(newTrain);
+    
+      //set up start and nextArrival vars for moment.js 
+      var start = firstTrainTime;
+      var end = frequency;
+      var minutesAway = moment(end).diff(moment(start));
+      console.log(minutesAway);
+      var humanize = moment.duration(minutesAway).humanize();
+      console.log(humanize);
+      var asMinutes = moment.duration(minutesAway).as('minutes');
+      
+    
+
+      
 
   //step 2: send to database/write data to data base 
 
@@ -114,8 +120,6 @@ $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destinat
 
   // 4.now do this with moment.js to calculate the next arrival 
   //5. display that on screen 
-
-  
 
 
   })
